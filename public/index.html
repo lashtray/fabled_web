@@ -48,6 +48,79 @@
       color: var(--muted);
     }
 
+    .waitlist {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .waitlist input {
+      background: transparent;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: var(--fg);
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+      width: 220px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .waitlist input::placeholder {
+      color: var(--muted);
+    }
+
+    .waitlist input:focus {
+      border-color: var(--accent);
+    }
+
+    .waitlist button {
+      background: var(--accent);
+      border: none;
+      border-radius: 6px;
+      color: #0a0a0a;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.6rem 1.1rem;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    .waitlist button:hover {
+      opacity: 0.85;
+    }
+
+    .consent {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: left;
+      justify-content: center;
+      margin-top: 0.25rem;
+    }
+
+    .consent input[type="checkbox"] {
+      margin-top: 2px;
+      flex-shrink: 0;
+      accent-color: var(--accent);
+      width: auto;
+    }
+
+    .consent a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+
+    .consent a:hover {
+      color: var(--fg);
+    }
+
     footer {
       position: fixed;
       bottom: 2rem;
@@ -67,17 +140,36 @@
     footer a:hover {
       color: var(--fg);
     }
+
+    .footer-links {
+      margin-top: 0.4rem;
+    }
   </style>
 </head>
 <body>
 
   <main>
     <div class="wordmark">Fabled</div>
-    <p class="tagline">Coming soon</p>
+    <p class="tagline">Get notified when Fabled launches</p>
+    <form class="waitlist" name="waitlist" method="POST" netlify netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="waitlist" />
+      <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+      <input type="email" name="email" placeholder="email" autocomplete="email" required />
+      <button type="submit">Join the waitlist &rsaquo;</button>
+      <label class="consent">
+        <input type="checkbox" required />
+        I agree to receive updates about Fabled. See our <a href="/privacy-policy.html">Privacy Policy</a>.
+      </label>
+    </form>
   </main>
 
   <footer>
     <a href="mailto:hello@fabled.co">hello@fabled.co</a>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      &nbsp;&middot;&nbsp;
+      &copy; 2026 Fabled SL. All Rights Reserved
+    </div>
   </footer>
 
 </body>
